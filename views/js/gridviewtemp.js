@@ -23,9 +23,7 @@ class DynamicGridView {
     carouselcontainer.style.display = "none";
     const t = document.getElementById("carousel");
     if (this.imglist.imglist.length === 0) {
-      carouselcontainer.style.display = "block";
-      carouselcontainer.style.textAlign = "center";
-      carouselcontainer.innerHTML = "<h4>No images found on server<h4>";
+      this.utilityMessageStyle(carouselcontainer);
     } else {
       for (let i = 0; i < this.imglist.imglist.length; i++) {
         let clone = document.importNode(t.content, true);
@@ -43,6 +41,18 @@ class DynamicGridView {
     shadow.appendChild(carouselcontainer);
     //    display.appendChild(carouselcontainer);
   }
+  utilityMessageStyle(container) {
+    container.style.boxSizing = "border-box";
+    container.style.borderRadius = "4px";
+    container.style.display = "block";
+    container.style.textAlign = "center";
+    container.style.width = "90%";
+    container.style.margin = "auto";
+    container.style.border = "1px solid rgba(0,0,0,.2)";
+    container.style.fontSize = "1.1rem";
+    container.style.backgroundColor = "#cecece";
+    container.innerHTML = "<p>No images found on server<p>";
+  }
   createImgGridView() {
     const display = document.getElementById("display-gridview");
     while (display.lastChild) {
@@ -53,9 +63,7 @@ class DynamicGridView {
     gridcontainer.id = "grid-container";
     const t = document.getElementById("grid-view");
     if (this.imglist.imglist.length === 0) {
-      gridcontainer.style.display = "block";
-      gridcontainer.style.textAlign = "center";
-      gridcontainer.innerHTML = "<h4>No images found on server<h4>";
+      this.utilityMessageStyle(gridcontainer);
     } else {
       for (let i = 0; i < this.imglist.imglist.length; i++) {
         let clone = document.importNode(t.content, true);
