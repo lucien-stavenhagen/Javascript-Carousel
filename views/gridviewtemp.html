@@ -33,6 +33,52 @@
                 </a>
             </div>
         </div>
+        <style>
+            #carousel-container {
+                width: 90%;
+                margin: auto;
+                grid-template-columns: minmax(min-content, 768px);
+                grid-gap: 2px;
+                justify-content: center;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .carousel-img-frame {
+                padding: 1rem;
+                grid-column: 1 / span 1;
+                grid-row: 1/2;
+            }
+
+            .grid-img-frame {
+                padding: 1rem;
+            }
+
+            .img-card {
+                padding: 0.3rem;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+            }
+
+            .grid-image {
+                box-sizing: border-box;
+                display: block;
+                margin: 0 auto;
+                border-radius: 3px;
+                max-width: 100%;
+                max-height: 600px;
+            }
+
+            .grid-caption {
+                max-width: 100%;
+                width: auto;
+                display: block;
+                padding: 1rem;
+                text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+                background-color: #ddeefe;
+            }
+        </style>
     </template>
     <template id="grid-view">
         <div class="grid-img-frame">
@@ -43,6 +89,66 @@
                 </a>
             </div>
         </div>
+        <style>
+            #grid-container {
+                width: 90%;
+                margin: auto;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 2px;
+                justify-content: center;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .grid-img-frame {
+                padding: 1rem;
+            }
+
+            .img-card {
+                padding: 0.3rem;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+            }
+
+            .grid-image {
+                box-sizing: border-box;
+                display: block;
+                margin: 0 auto;
+                border-radius: 3px;
+                max-width: 100%;
+                max-height: 600px;
+            }
+
+            .grid-caption {
+                max-width: 100%;
+                width: auto;
+                display: block;
+                padding: 1rem;
+                text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+                background-color: #ddeefe;
+            }
+
+
+            @media screen and (max-width: 960px) {
+                #grid-container {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media screen and (max-width: 720px) {
+                #grid-container {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media screen and (max-width: 540px) {
+                #grid-container {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
     </template>
     <script src="./js/gridviewtemp.js"></script>
 

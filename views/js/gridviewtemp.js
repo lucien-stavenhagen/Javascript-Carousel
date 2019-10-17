@@ -17,6 +17,7 @@ class DynamicGridView {
     while (display.lastChild) {
       display.removeChild(display.lastChild);
     }
+    const shadow = display.attachShadow({ mode: "open" });
     const carouselcontainer = document.createElement("div");
     carouselcontainer.id = "carousel-container";
     carouselcontainer.style.display = "none";
@@ -39,13 +40,15 @@ class DynamicGridView {
         carouselcontainer.appendChild(clone);
       }
     }
-    display.appendChild(carouselcontainer);
+    shadow.appendChild(carouselcontainer);
+    //    display.appendChild(carouselcontainer);
   }
   createImgGridView() {
     const display = document.getElementById("display-gridview");
     while (display.lastChild) {
       display.removeChild(display.lastChild);
     }
+    const shadow = display.attachShadow({ mode: "open" });
     const gridcontainer = document.createElement("div");
     gridcontainer.id = "grid-container";
     const t = document.getElementById("grid-view");
@@ -65,14 +68,20 @@ class DynamicGridView {
         gridcontainer.appendChild(clone);
       }
     }
-    display.appendChild(gridcontainer);
+    shadow.appendChild(gridcontainer);
+    //    display.appendChild(gridcontainer);
   }
   showNextSlide(direction) {
     if (this.imglist.imglist.length === 0) {
       return;
     }
-    const carouselcontainer = document.getElementById("carousel-container");
-    const slides = carouselcontainer.children;
+    const display = document.getElementById("display-carousel");
+    const carouselcontainer = display.shadowRoot.getElementById(
+      "carousel-container"
+    );
+    const slides = carouselcontainer.getElementsByClassName(
+      "carousel-img-frame"
+    );
     if (slides.length >= 1) {
       if (carouselcontainer.style.display === "none") {
         carouselcontainer.style.display = "grid";
