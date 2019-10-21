@@ -27,13 +27,13 @@ class DynamicGridView {
     } else {
       for (let i = 0; i < this.imglist.imglist.length; i++) {
         let clone = document.importNode(t.content, true);
-        let ftag = clone.getElementById("carousel-frame-tag");
+        let ftag = clone.querySelector(".carousel-img-frame");
         ftag.style.display = "none";
-        let atag = clone.getElementById("carousel-a-tag");
+        let atag = clone.querySelector("a");
         atag.setAttribute("href", this.imglist.imglist[i].path);
-        let itag = clone.getElementById("carousel-img-tag");
+        let itag = clone.querySelector(".grid-image");
         itag.setAttribute("src", this.imglist.imglist[i].path);
-        let stag = clone.getElementById("carousel-img-caption");
+        let stag = clone.querySelector(".grid-caption");
         stag.innerHTML = this.imglist.imglist[i].name;
         carouselcontainer.appendChild(clone);
       }
@@ -67,11 +67,11 @@ class DynamicGridView {
     } else {
       for (let i = 0; i < this.imglist.imglist.length; i++) {
         let clone = document.importNode(t.content, true);
-        let atag = clone.getElementById("a-tag");
+        let atag = clone.querySelector("a");
         atag.setAttribute("href", this.imglist.imglist[i].path);
-        let itag = clone.getElementById("img-tag");
+        let itag = clone.querySelector(".grid-image");
         itag.setAttribute("src", this.imglist.imglist[i].path);
-        let stag = clone.getElementById("img-caption");
+        let stag = clone.querySelector(".grid-caption");
         stag.innerHTML = this.imglist.imglist[i].name;
         gridcontainer.appendChild(clone);
       }
