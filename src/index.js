@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 2001;
 const HOST = process.env.HOST || "http://localhost";
 app.use(cors());
 app.use(express.json());
+if(!fs.existsSync(imgpath)){
+  fs.mkdirSync(imgpath)
+}
 app.use("/images", express.static(imgpath));
 
 app.use("/getimgs", (request, response, next) => {
