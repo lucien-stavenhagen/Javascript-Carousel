@@ -72,7 +72,7 @@ class DynamicGridView {
         let itag = clone.querySelector(".grid-image");
         itag.setAttribute("src", this.imglist.imglist[i].path);
         let stag = clone.querySelector(".grid-caption");
-        stag.innerHTML = this.imglist.imglist[i].name;
+        stag.innerHTML = `Super Nice Building Caption ${i}`;
         gridcontainer.appendChild(clone);
       }
     }

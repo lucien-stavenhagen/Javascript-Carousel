@@ -14,10 +14,6 @@
         <div class="descriptor">
             <h1>Carousel view:</h1>
         </div>
-        <div class="btn-group">
-            <button id="previous" onclick="car.showNextSlide(-1)">Prev</button>
-            <button id="next" onclick="car.showNextSlide(1)">Next</button>
-        </div>
         <div id="display-carousel"></div>
         <div class="descriptor">
             <h1>Grid view:</h1>
@@ -25,13 +21,16 @@
         <div id="display-gridview"></div>
     </body>
     <template id="carousel">
-        <div class="carousel-img-frame">
-            <div class="img-card">
+        <div class="fadeIn carousel-img-frame">
+            <figure class="img-card">
+                <div id="previous" onclick="car.showNextSlide(-1)">
+                    &#10094
+                </div>
+                <div id="next" onclick="car.showNextSlide(1)">&#10095</div>
                 <a target="_blank">
-                    <img class="grid-image">
-                    <span class="grid-caption"></span>
-                </a>
-            </div>
+                    <img class="grid-image"></a>
+                <figcaption class="grid-caption"></figcaption>
+            </figure>
         </div>
         <style>
             #carousel-container {
@@ -40,23 +39,75 @@
                 grid-template-columns: minmax(min-content, 768px);
                 grid-gap: 2px;
                 justify-content: center;
-                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            #previous,
+            #next {
+                display: inline-block;
+                position: absolute;
+                text-decoration: none;
+                color: rgba(255, 255, 255, .4);
+                font-size: 2.5rem;
+                padding: 0;
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+            }
+
+            #previous {
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
+
+            #next {
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+            }
+
+            #previous:hover,
+            #next:hover {
+                background-color: rgba(0, 0, 0, 0.6);
+                cursor: grab;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                }
             }
 
             .carousel-img-frame {
-                padding: 1rem;
                 grid-column: 1 / span 1;
                 grid-row: 1/2;
+                animation-name: fadeIn;
+                animation-duration: 1s;
             }
 
             .grid-img-frame {
-                padding: 1rem;
+                padding: 0;
+                margin: 0;
             }
 
             .img-card {
-                padding: 0.3rem;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 3px;
+                padding: 0;
+                margin: 0;
+                position: relative;
+
             }
 
             .grid-image {
@@ -74,20 +125,16 @@
                 display: block;
                 padding: 1rem;
                 text-align: center;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 3px;
-                background-color: #ddeefe;
             }
         </style>
     </template>
     <template id="grid-view">
         <div class="grid-img-frame">
-            <div class="img-card">
+            <figure class="img-card">
                 <a target="_blank">
-                    <img class="grid-image">
-                    <span class="grid-caption"></span>
-                </a>
-            </div>
+                    <img class="grid-image"></a>
+                <figcaption class="grid-caption"></figcaption>
+            </figure>
         </div>
         <style>
             #grid-container {
@@ -96,27 +143,24 @@
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-gap: 2px;
-                justify-content: center;
-                border: 1px solid rgba(0, 0, 0, 0.2);
+                justify-content: space-evenly;
             }
 
             .grid-img-frame {
-                padding: 1rem;
+                padding: 0;
             }
 
             .img-card {
-                padding: 0.3rem;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 3px;
+                padding: 0;
+                margin: 0;
             }
 
             .grid-image {
                 box-sizing: border-box;
                 display: block;
                 margin: 0 auto;
-                border-radius: 3px;
                 max-width: 100%;
-                max-height: 600px;
+                max-height: 150px;
             }
 
             .grid-caption {
@@ -125,9 +169,6 @@
                 display: block;
                 padding: 1rem;
                 text-align: center;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 3px;
-                background-color: #ddeefe;
             }
 
 
@@ -135,17 +176,29 @@
                 #grid-container {
                     grid-template-columns: repeat(3, 1fr);
                 }
+
+                .grid-image {
+                    max-height: 220px;
+                }
             }
 
             @media screen and (max-width: 720px) {
                 #grid-container {
                     grid-template-columns: repeat(2, 1fr);
                 }
+
+                .grid-image {
+                    max-height: 300px;
+                }
             }
 
             @media screen and (max-width: 540px) {
                 #grid-container {
                     grid-template-columns: 1fr;
+                }
+
+                .grid-image {
+                    max-height: 100%;
                 }
             }
         </style>

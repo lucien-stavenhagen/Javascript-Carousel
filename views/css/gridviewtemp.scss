@@ -1,21 +1,17 @@
 * {
   font-family: sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .descriptor {
   text-align: center;
   margin: 0 0 2px 0;
   background-color: rgba(10, 65, 90, 0.2);
+  h1 {
+    margin: 0;
+    color: black;
+    padding: 1rem;
+  }
 }
-
-.descriptor h1 {
-  margin: 0;
-  color: black;
-  padding: 1rem;
-}
-
 #previous,
 #next {
   display: inline-block;
@@ -25,28 +21,23 @@
   padding: 0;
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 #previous:hover,
 #next:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
-
 .btn-group {
   width: 90%;
   margin: 0 auto 1px auto;
   padding: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  button {
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.6rem;
+    border-radius: 3px;
+  }
+  button:hover {
+    background-color: #ddeefe;
+  }
 }
-
-.btn-group button {
-  margin: 0;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0.6rem;
-  border-radius: 3px;
-}
-
-.btn-group button:hover {
-  background-color: #ddeefe;
-}
-/*# sourceMappingURL=gridviewtemp.css.map */
