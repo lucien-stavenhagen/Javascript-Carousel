@@ -12,6 +12,18 @@
     padding: 1rem;
   }
 }
+.button-group {
+  text-align: center;
+  padding: 1rem;
+  #toggle-carousel {
+    padding: 0.7rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  #toggle-carousel:hover {
+    background-color: #cccccc;
+    cursor: pointer;
+  }
+}
 #previous,
 #next {
   display: inline-block;

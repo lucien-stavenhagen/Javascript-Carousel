@@ -109,3 +109,23 @@ class DynamicGridView {
   }
 }
 const car = new DynamicGridView();
+
+const continuousSlides = gridviewobj => {
+  let id;
+  let toggle = true;
+  const toggleSlides = () => {
+    if (toggle) {
+      document.getElementById("toggle-carousel").innerHTML = "Carousel On";
+      id = setInterval(() => {
+        gridviewobj.showNextSlide(1);
+      }, 5000);
+    } else {
+      document.getElementById("toggle-carousel").innerHTML = "Carousel Off";
+      clearInterval(id);
+    }
+    toggle = !toggle;
+  };
+  return { toggleSlides };
+};
+
+const doSlides = continuousSlides(car);
